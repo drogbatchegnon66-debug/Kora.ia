@@ -1,0 +1,2 @@
+# Kora.ia
+Assistante intelligent 
