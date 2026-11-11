@@ -1,0 +1,6 @@
+KORA IA — prototype de départ
+1. Décompressez ce dossier.
+2. Ouvrez index.html pour prévisualiser l'interface dans un navigateur.
+3. Pour l'installer comme application PWA, hébergez le dossier sur un hébergement HTTPS (par exemple GitHub Pages).
+4. Cette version est une maquette interactive : elle ne se connecte pas encore à un vrai modèle IA.
+5. Ne mettez jamais une clé API secrète directement dans index.html. Une connexion IA réelle nécessitera un petit serveur/backend sécurisé.

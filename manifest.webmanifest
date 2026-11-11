@@ -1,0 +1,19 @@
+{
+  "name": "KORA IA - Assistant intelligent",
+  "short_name": "KORA IA",
+  "description": "Votre assistant intelligent",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0c1020",
+  "theme_color": "#10152b",
+  "icons": [
+    {
+      "src": "icons/kora.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

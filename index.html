@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10152b">
+  <meta name="description" content="KORA IA, votre assistant intelligent.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/kora.svg" type="image/svg+xml">
+  <title>KORA IA</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0c1020;--panel:#151b32;--panel2:#1b2340;--text:#f5f7ff;--muted:#aab3d0;--blue:#6685ff;--violet:#9b70ff}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#25204d 0,transparent 38%),var(--bg);color:var(--text);font:16px system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+    .app{max-width:760px;margin:auto;min-height:100vh;display:flex;flex-direction:column;padding:18px 16px calc(18px + env(safe-area-inset-bottom))}
+    header{display:flex;align-items:center;gap:12px;padding:8px 2px 20px}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,var(--blue),var(--violet));display:grid;place-items:center;font-weight:900;font-size:20px;box-shadow:0 8px 28px #586bff55}
+    .brand{font-size:20px;font-weight:800;letter-spacing:.3px}.tag{font-size:12px;color:var(--muted)}.status{margin-left:auto;font-size:11px;color:#9de6c0;background:#16372f;padding:7px 10px;border-radius:99px}
+    main{flex:1}.welcome{padding:28px 4px 20px}.eyebrow{color:#a99aff;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+    h1{font-size:clamp(30px,8vw,44px);line-height:1.08;margin:12px 0}.gradient{background:linear-gradient(90deg,#8da5ff,#c29aff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .sub{color:var(--muted);line-height:1.6;max-width:520px}.suggestions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 24px}
+    .suggestion{background:linear-gradient(145deg,#1b2340,#141a30);border:1px solid #30395c;border-radius:16px;padding:15px;text-align:left;color:var(--text);min-height:100px}
+    .suggestion b{display:block;margin:8px 0 4px;font-size:14px}.suggestion small{color:var(--muted);line-height:1.4}
+    .chat{display:flex;flex-direction:column;gap:12px;padding:4px 0 18px}.msg{max-width:88%;padding:13px 15px;border-radius:17px;line-height:1.5;white-space:pre-wrap}.assistant{background:var(--panel);border:1px solid #2b3557;align-self:flex-start}.user{background:linear-gradient(135deg,#4c68db,#7654c9);align-self:flex-end}
+    .composer{position:sticky;bottom:0;background:#0c1020eF;padding:12px 0 4px}.inputrow{display:flex;gap:9px;background:#171e35;border:1px solid #354064;border-radius:18px;padding:8px}
+    textarea{resize:none;flex:1;background:transparent;border:0;outline:0;color:var(--text);font:inherit;padding:9px;max-height:120px;min-height:42px}button{cursor:pointer}
+    .send{border:0;border-radius:13px;width:46px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;font-size:20px;font-weight:800}
+    .disclaimer{text-align:center;color:#7f89a9;font-size:11px;padding:9px 8px 0}.hidden{display:none!important}
+    nav{display:flex;justify-content:space-around;padding:12px 0 0;color:#aab3d0;font-size:12px}nav span{display:flex;flex-direction:column;align-items:center;gap:4px}
+    @media(max-width:420px){.suggestions{grid-template-columns:1fr 1fr}.welcome{padding-top:18px}.suggestion{padding:12px}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <header><div class="logo">K</div><div><div class="brand">KORA IA</div><div class="tag">Votre assistant intelligent</div></div><div class="status">● Démo</div></header>
+  <main>
+    <section class="welcome" id="welcome">
+      <div class="eyebrow">L'intelligence à portée de main</div>
+      <h1>Bonjour !<br><span class="gradient">Que puis-je faire pour vous ?</span></h1>
+      <p class="sub">Posez une question, explorez une idée ou demandez de l'aide pour avancer dans vos projets.</p>
+      <div class="suggestions">
+        <button class="suggestion" data-prompt="Explique-moi simplement comment fonctionne l'intelligence artificielle."><span>✦</span><b>Découvrir l'IA</b><small>Comprendre un sujet simplement</small></button>
+        <button class="suggestion" data-prompt="Aide-moi à trouver une idée de projet numérique."><span>◈</span><b>Créer un projet</b><small>Transformer une idée en plan</small></button>
+        <button class="suggestion" data-prompt="Aide-moi à rédiger un texte professionnel."><span>✎</span><b>Écrire un texte</b><small>Rédaction et reformulation</small></button>
+        <button class="suggestion" data-prompt="Prépare-moi un programme pour apprendre une nouvelle compétence."><span>⌁</span><b>Apprendre</b><small>Un plan étape par étape</small></button>
+      </div>
+    </section>
+    <section class="chat hidden" id="chat" aria-live="polite"></section>
+  </main>
+  <div class="composer">
+    <div class="inputrow"><textarea id="prompt" rows="1" placeholder="Écrivez votre message à KORA IA..."></textarea><button class="send" id="send" aria-label="Envoyer">↑</button></div>
+    <div class="disclaimer">Version prototype : les réponses sont simulées. La connexion à un véritable moteur IA sera ajoutée ensuite.</div>
+  </div>
+  <nav><span>⌂<b>Accueil</b></span><span>▤<b>Historique</b></span><span>⚙<b>Paramètres</b></span></nav>
+</div>
+<script>
+const welcome=document.querySelector('#welcome'),chat=document.querySelector('#chat'),input=document.querySelector('#prompt');
+function add(text,who){const el=document.createElement('div');el.className='msg '+who;el.textContent=text;chat.appendChild(el);chat.scrollIntoView({behavior:'smooth',block:'end'});}
+function send(text=input.value.trim()){if(!text)return;welcome.classList.add('hidden');chat.classList.remove('hidden');add(text,'user');input.value='';setTimeout(()=>add("Merci pour votre message ! KORA IA est en cours de construction. Cette version de démonstration présente l'interface ; la connexion à un véritable assistant IA sera activée dans une prochaine étape.",'assistant'),450);}
+document.querySelector('#send').addEventListener('click',()=>send());
+input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+document.querySelectorAll('[data-prompt]').forEach(b=>b.addEventListener('click',()=>send(b.dataset.prompt)));
+if('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script>
+</body>
+</html>
